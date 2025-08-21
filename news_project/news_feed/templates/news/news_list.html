@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Лента новостей</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            margin: 0;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 15px;
+            margin: 0;
+            background: #0077cc;
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        li img {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .content {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content h2 {
+            margin: 0 0 10px 0;
+            color: #0077cc;
+        }
+
+        .content p {
+            margin: 0 0 10px 0;
+        }
+
+        .date {
+            margin-top: auto;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .pagination a {
+            margin: 0 8px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            background: #0077cc;
+            color: white;
+            text-decoration: none;
+        }
+
+        .pagination a:hover {
+            background: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Новости</h1>
+
+    <div class="container">
+        <div class="toolbar">
+            <a href="{% url 'add_news' %}">Добавить новость</a>
+
+            <form method="get">
+                <label>Показывать по:</label>
+                <select name="per_page" onchange="this.form.submit()">
+                    <option value="10" {% if per_page == 10 %}selected{% endif %}>10</option>
+                    <option value="20" {% if per_page == 20 %}selected{% endif %}>20</option>
+                    <option value="50" {% if per_page == 50 %}selected{% endif %}>50</option>
+                </select>
+            </form>
+        </div>
+
+        <ul>
+            {% for item in page_obj %}
+                <li>
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="news image">
+                    {% endif %}
+                    <div class="content">
+                        <h2>{{ item.title }}</h2>
+                        <p>{{ item.description }}</p>
+                        <p class="date">{{ item.date_pub|date:"d.m.Y H:i" }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}&per_page={{ per_page }}">← Назад</a>
+            {% endif %}
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}&per_page={{ per_page }}">Вперёд →</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
