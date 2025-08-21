@@ -54,3 +54,18 @@ MEDIA_ROOT = BASE_DIR / 'media'
 ------
 
 If you need to change the design of your web application, use the ```<styles>``` field in your HTML markup
+
+-----
+
+<h3>Usage Instructions:</h3>
+When you follow the link, you will be taken to the main page where all created news items are displayed
+
+<img width="1919" height="917" alt="image" src="https://github.com/user-attachments/assets/24583166-81a3-4321-af7f-431912142286" />
+*some images are not displayed because they have been deleted
+
+To create a new news item, click on the "Add News" button in the top left corner of the screen. After clicking, you will be taken to the news form filling page where you need to specify the News Title, description, and select a photo
+
+<img width="1919" height="927" alt="image" src="https://github.com/user-attachments/assets/29b4c071-b0ad-450a-ae57-34ee30dc05bc" />
+If there are more news items than selected in the top right corner, a page navigation menu will appear at the bottom of the page
+
+<img width="1227" height="756" alt="image" src="https://github.com/user-attachments/assets/422d3f4e-c605-4c85-b86a-11170e5034b7" />
