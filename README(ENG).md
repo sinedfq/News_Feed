@@ -53,4 +53,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 ```
 ------
 
-If you need to change the design of your web application, use the <styles> field in your HTML markup
+If you need to change the design of your web application, use the ```<styles>``` field in your HTML markup
