@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from .models import News 
 from .forms import NewsForm
 
-
+# Function for displays a list of news articles with pagination.
 def news_list(request):
     per_page = request.GET.get("per_page", 10)
     try:
@@ -22,6 +22,7 @@ def news_list(request):
         "per_page": per_page,
     })
 
+# Function for adds a new news article using a form.
 def add_news(request):
     if request.method == "POST":
         form = NewsForm(request.POST, request.FILES)
