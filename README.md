@@ -27,6 +27,8 @@
 <img align = "center" width="1458" height="946" alt="image" src="https://github.com/user-attachments/assets/1b8645b1-81aa-47b6-a14a-1e0077d2adab" />
 <img align = "center" width="1458" height="945" alt="image" src="https://github.com/user-attachments/assets/beb1bfe6-92ba-43c2-b59d-abd40fdaa758" />
 
+<br>
+
 2. Через командную строчку <br>
 Необходимо перейти в путь, куда установлен PostgreSQL и запустить следующей командой консоль: ```psql -U postgres``` <br>
 Выполнить создание таблицы командой ``` CREATE DATABASE news_feed_db; ``` <br>
